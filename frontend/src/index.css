@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  @apply text-gray-900 dark:text-gray-100;
+  background-color: #f7f6fb;
+  background-image:
+    radial-gradient(900px 500px at 100% -10%, rgba(119,87,245,0.13), transparent 60%),
+    radial-gradient(700px 480px at -10% 105%, rgba(255,150,100,0.12), transparent 60%);
+  background-attachment: fixed;
+  transition: background-color 0.2s ease;
+}
+.dark body {
+  background-color: #100e20;
+  background-image:
+    radial-gradient(900px 500px at 100% -10%, rgba(119,87,245,0.22), transparent 60%),
+    radial-gradient(700px 480px at -10% 105%, rgba(255,120,90,0.07), transparent 60%);
+}
+
+h1, h2, h3 {
+  font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 2px solid #7757f5;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #c8c4dc; border-radius: 8px; }
+.dark ::-webkit-scrollbar-thumb { background: #433f5c; }
+
+/* Custom slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #7757f5 var(--val, 50%), #e0dded var(--val, 50%));
+  outline: none;
+}
+.dark input[type="range"] {
+  background: linear-gradient(to right, #9078ff var(--val, 50%), #2a2744 var(--val, 50%));
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  border: 5px solid #6339e6;
+  box-shadow: 0 2px 8px rgba(99,57,230,0.45);
+  transition: transform .15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  border: 5px solid #6339e6;
+}
+
+.card {
+  @apply bg-white/90 dark:bg-gray-900/80 rounded-2xl shadow-card border border-gray-200/70 dark:border-gray-800 backdrop-blur-sm;
+}
+
+.btn-primary {
+  background-image: linear-gradient(135deg, #6339e6 0%, #8a63ff 100%);
+  box-shadow: 0 8px 20px -8px rgba(99,57,230,0.7);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 12px 26px -8px rgba(99,57,230,0.8);
+}
+.btn-primary:active:not(:disabled) { transform: translateY(1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
